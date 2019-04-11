@@ -3,6 +3,7 @@ package com.raywenderlich.tipcalculator
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -10,7 +11,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
-const val HUNDRED_PERCENT = 100
+const val HUNDRED_PERCENT = 100.00
 
 class MainActivity : AppCompatActivity() {
 
@@ -72,8 +73,8 @@ class MainActivity : AppCompatActivity() {
         val tipPercent = tipText.text.toString().toInt()
         val numberOfPeople = numberOfPeopleText.text.toString().toInt()
 
-        val totalAmount = amount * (HUNDRED_PERCENT + tipPercent) / HUNDRED_PERCENT
-        val totalTip = tipPercent * amount
+        val totalAmount = ((HUNDRED_PERCENT + tipPercent) / HUNDRED_PERCENT) * amount
+        val totalTip = (tipPercent / HUNDRED_PERCENT) * amount
         val billPerPerson = totalAmount / numberOfPeople
         val tipPerPerson = totalTip / numberOfPeople
 
