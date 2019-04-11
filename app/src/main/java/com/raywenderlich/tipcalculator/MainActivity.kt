@@ -1,6 +1,5 @@
 package com.raywenderlich.tipcalculator
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +8,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
+
+const val HUNDRED_PERCENT = 100
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,26 +52,42 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateTip() {
-        val amount = amountText.text.toString().toDouble();
-        val tip = tipText.text.toString().toInt();
-        val people = peopleText.text.toString().toInt();
 
-        val totalAmount = amount * (100 + tip)/100
-        val totalTip = tip * amount
+        if (amountText.text.isEmpty()) {
+            Toast.makeText(this, getString(R.string.amountTextErrorMessage), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (tipText.text.isEmpty()) {
+            Toast.makeText(this, getString(R.string.tipTextErrorMessage), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (peopleText.text.isEmpty()) {
+            Toast.makeText(this, getString(R.string.peopleTextDefaultValue), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val amount = amountText.text.toString().toDouble()
+        val tipPercent = tipText.text.toString().toInt()
+        val people = peopleText.text.toString().toInt()
+
+        val totalAmount = amount * (HUNDRED_PERCENT + tipPercent) / HUNDRED_PERCENT
+        val totalTip = tipPercent * amount
         val billPerPax = totalAmount / people
         val tipPerPax = totalTip / people
 
-        totalBillTextView.text = "Total Bill: $" + String.format("%.2f", totalAmount);
-        totalTipTextView.text = "Total Tip: $" + String.format("%.2f", totalTip);
-        billPerPaxTextView.text = "Bill per pax: $" + String.format("%.2f", billPerPax);
-        tipPerPaxTextView.text = "Tip per pax: $" + String.format("%.2f", tipPerPax);
+        totalBillTextView.text = String.format(getString(R.string.totalAmountText), totalAmount)
+        totalTipTextView.text = String.format(getString(R.string.totalTipText), totalTip)
+        billPerPaxTextView.text = String.format(getString(R.string.billPerPaxText), billPerPax)
+        tipPerPaxTextView.text = String.format(getString(R.string.tipPerPaxText), tipPerPax)
 
         amountText.hideKeyboard()
         tipText.hideKeyboard()
         peopleText.hideKeyboard()
     }
 
-    fun View.hideKeyboard() {
+    private fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }

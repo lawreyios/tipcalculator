@@ -1,118 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical"
-  android:padding="20dp"
-  android:background="@color/colorWhite"
-  tools:context=".MainActivity">
-
-
-  <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textStyle="bold"
-    android:text="Total:" />
-
-  <EditText
-    android:id="@+id/amountText"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="numberDecimal"
-    android:hint="Enter Amount" />
-
-  <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textStyle="bold"
-    android:text="Tip Amount (%):" />
-
-  <EditText
-    android:id="@+id/tipText"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="number"
-    android:text="20" />
-
-  <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textStyle="bold"
-    android:text="Number of People:" />
-
-  <EditText
-    android:id="@+id/peopleText"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="number"
-    android:text="4" />
-
-  <RelativeLayout
-    android:layout_marginTop="20dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ImageButton
-      android:id="@+id/equalButton"
-      android:src="@drawable/equal"
-      android:scaleType="fitCenter"
-      android:tint="@color/colorWhite"
-      android:background="@color/colorAccent"
-      android:layout_width="100dp"
-      android:layout_height="70dp"
-      android:layout_centerVertical="true"
-      android:layout_centerHorizontal="true"
-      android:adjustViewBounds="true"
-      android:padding="12dp"
-      android:onClick="calculateTip"
-      />
-
-  </RelativeLayout>
-
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorAccent"
-    android:layout_marginTop="30dp"
-    android:padding="20dp">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@color/colorWhite"
+        tools:context=".MainActivity">
 
     <TextView
-      android:id="@+id/totalBillTextView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="20sp"
-      android:textStyle="bold"
-      android:text="Total Bill: $0" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/h4Bold"
+            android:text="@string/amountTextLabel"/>
+
+    <EditText
+            android:id="@+id/amountText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="@string/amountTextHint"/>
 
     <TextView
-      android:id="@+id/totalTipTextView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="20sp"
-      android:textStyle="bold"
-      android:text="Total Tip: $0" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/h4Bold"
+            android:text="@string/tipTextLabel"/>
+
+    <EditText
+            android:id="@+id/tipText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="@string/tipTextDefaultValue"/>
 
     <TextView
-      android:id="@+id/billPerPaxTextView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="40dp"
-      android:textSize="25sp"
-      android:textStyle="bold"
-      android:text="Bill per pax: $0" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/h4Bold"
+            android:text="@string/peopleTextLabel"/>
 
-    <TextView
-      android:id="@+id/tipPerPaxTextView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="25sp"
-      android:textStyle="bold"
-      android:text="Tip per pax: $0" />
+    <EditText
+            android:id="@+id/peopleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="@string/peopleTextDefaultValue"/>
 
+    <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-  </LinearLayout>
+        <ImageButton
+                android:id="@+id/equalButton"
+                android:src="@drawable/equal"
+                android:scaleType="fitCenter"
+                android:tint="@color/colorWhite"
+                android:background="@color/colorAccent"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:padding="12dp"
+        />
 
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:layout_marginTop="30dp"
+            android:padding="20dp">
+
+        <TextView
+                android:id="@+id/totalBillTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/h4Bold"/>
+
+        <TextView
+                android:id="@+id/totalTipTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/h4Bold"/>
+
+        <TextView
+                android:id="@+id/billPerPaxTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                style="@style/h3Bold"/>
+
+        <TextView
+                android:id="@+id/tipPerPaxTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/h3Bold"/>
+
+    </LinearLayout>
 
 </LinearLayout>
