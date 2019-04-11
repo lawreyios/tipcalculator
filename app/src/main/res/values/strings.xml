@@ -4,8 +4,8 @@
     <string name="amountTextHint">Enter Amount</string>
     <string name="tipTextLabel">Tip Amount (%):</string>
     <string name="tipTextDefaultValue">20</string>
-    <string name="peopleTextLabel">Number of People:</string>
-    <string name="peopleTextDefaultValue">4</string>
+    <string name="numberOfPeopleTextLabel">Number of People:</string>
+    <string name="numberOfPeopleTextDefaultValue">4</string>
 
     <string name="amountTextErrorMessage">You did not enter an amount</string>
     <string name="tipTextErrorMessage">You did not enter tip percentage</string>
@@ -13,6 +13,6 @@
 
     <string name="totalAmountText">Total Bill: $%.2f</string>
     <string name="totalTipText">Total Tip: $%.2f</string>
-    <string name="billPerPaxText">Bill per pax: $%.2f</string>
-    <string name="tipPerPaxText">Tip per pax: $%.2f</string>
+    <string name="billPerPersonText">Bill per person: $%.2f</string>
+    <string name="tipPerPersonText">Tip per person: $%.2f</string>
 </resources>

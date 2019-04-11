@@ -39,14 +39,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/h4Bold"
-            android:text="@string/peopleTextLabel"/>
+            android:text="@string/numberOfPeopleTextLabel"/>
 
     <EditText
-            android:id="@+id/peopleText"
+            android:id="@+id/numberOfPeopleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="@string/peopleTextDefaultValue"/>
+            android:text="@string/numberOfPeopleTextDefaultValue"/>
 
     <RelativeLayout
             android:layout_marginTop="20dp"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content">
 
         <ImageButton
-                android:id="@+id/equalButton"
+                android:id="@+id/calculateButton"
                 android:src="@drawable/equal"
                 android:scaleType="fitCenter"
                 android:tint="@color/colorWhite"
@@ -90,14 +90,14 @@
                 style="@style/h4Bold"/>
 
         <TextView
-                android:id="@+id/billPerPaxTextView"
+                android:id="@+id/billPerPersonTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 style="@style/h3Bold"/>
 
         <TextView
-                android:id="@+id/tipPerPaxTextView"
+                android:id="@+id/tipPerPersonTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/h3Bold"/>

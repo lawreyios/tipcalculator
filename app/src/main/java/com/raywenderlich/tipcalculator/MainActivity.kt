@@ -17,16 +17,16 @@ class MainActivity : AppCompatActivity() {
     // Calculator
     private lateinit var amountText: EditText
     private lateinit var tipText: EditText
-    private lateinit var peopleText: EditText
+    private lateinit var numberOfPeopleText: EditText
 
     // Bill Receipt
     private lateinit var totalBillTextView: TextView
     private lateinit var totalTipTextView: TextView
-    private lateinit var billPerPaxTextView: TextView
-    private lateinit var tipPerPaxTextView: TextView
+    private lateinit var billPerPersonTextView: TextView
+    private lateinit var tipPerPersonTextView: TextView
 
     // Button
-    private lateinit var equalButton: ImageButton
+    private lateinit var calculateButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,15 +38,15 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         amountText = findViewById(R.id.amountText)
         tipText = findViewById(R.id.tipText)
-        peopleText = findViewById(R.id.peopleText)
+        numberOfPeopleText = findViewById(R.id.numberOfPeopleText)
 
         totalBillTextView = findViewById(R.id.totalBillTextView)
         totalTipTextView = findViewById(R.id.totalTipTextView)
-        billPerPaxTextView = findViewById(R.id.billPerPaxTextView)
-        tipPerPaxTextView = findViewById(R.id.tipPerPaxTextView)
+        billPerPersonTextView = findViewById(R.id.billPerPersonTextView)
+        tipPerPersonTextView = findViewById(R.id.tipPerPersonTextView)
 
-        equalButton = findViewById(R.id.equalButton)
-        equalButton.setOnClickListener {
+        calculateButton = findViewById(R.id.calculateButton)
+        calculateButton.setOnClickListener {
             calculateTip()
         }
     }
@@ -63,28 +63,28 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        if (peopleText.text.isEmpty()) {
-            Toast.makeText(this, getString(R.string.peopleTextDefaultValue), Toast.LENGTH_SHORT).show()
+        if (numberOfPeopleText.text.isEmpty()) {
+            Toast.makeText(this, getString(R.string.numberOfPeopleTextDefaultValue), Toast.LENGTH_SHORT).show()
             return
         }
 
         val amount = amountText.text.toString().toDouble()
         val tipPercent = tipText.text.toString().toInt()
-        val people = peopleText.text.toString().toInt()
+        val numberOfPeople = numberOfPeopleText.text.toString().toInt()
 
         val totalAmount = amount * (HUNDRED_PERCENT + tipPercent) / HUNDRED_PERCENT
         val totalTip = tipPercent * amount
-        val billPerPax = totalAmount / people
-        val tipPerPax = totalTip / people
+        val billPerPerson = totalAmount / numberOfPeople
+        val tipPerPerson = totalTip / numberOfPeople
 
         totalBillTextView.text = String.format(getString(R.string.totalAmountText), totalAmount)
         totalTipTextView.text = String.format(getString(R.string.totalTipText), totalTip)
-        billPerPaxTextView.text = String.format(getString(R.string.billPerPaxText), billPerPax)
-        tipPerPaxTextView.text = String.format(getString(R.string.tipPerPaxText), tipPerPax)
+        billPerPersonTextView.text = String.format(getString(R.string.billPerPersonText), billPerPerson)
+        tipPerPersonTextView.text = String.format(getString(R.string.tipPerPersonText), tipPerPerson)
 
         amountText.hideKeyboard()
         tipText.hideKeyboard()
-        peopleText.hideKeyboard()
+        numberOfPeopleText.hideKeyboard()
     }
 
     private fun View.hideKeyboard() {
