@@ -12,6 +12,10 @@ import android.widget.TextView
 const val HUNDRED_PERCENT = 100.00
 const val TIP_INCREMENT_PERCENT = 20
 const val PEOPLE_INCREMENT_VALUE = 1
+const val MIN_TIP = 0
+const val MIN_PEOPLE = 2
+const val MAX_TIP = 95
+const val MAX_PEOPLE = 20
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
 
@@ -78,30 +82,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
     }
 
     private fun incrementTip() {
-        tipPercent += TIP_INCREMENT_PERCENT
-        tipTextView.text = String.format("%d%%", tipPercent)
-        calculateExpense()
+        if (tipPercent != MAX_TIP) {
+            tipPercent += TIP_INCREMENT_PERCENT
+            tipTextView.text = String.format("%d%%", tipPercent)
+        }
     }
 
     private fun decrementTip() {
-        if (tipPercent != 0) {
+        if (tipPercent != MIN_TIP) {
             tipPercent -= TIP_INCREMENT_PERCENT
             tipTextView.text = String.format("%d%%", tipPercent)
-            calculateExpense()
         }
     }
 
     private fun incrementPeople() {
-        numberOfPeople += PEOPLE_INCREMENT_VALUE
-        numberOfPeopleTextView.text = numberOfPeople.toString()
-        calculateExpense()
+        if (numberOfPeople != MAX_PEOPLE) {
+            numberOfPeople += PEOPLE_INCREMENT_VALUE
+            numberOfPeopleTextView.text = numberOfPeople.toString()
+        }
     }
 
     private fun decrementPeople() {
-        if (numberOfPeople != 1) {
+        if (numberOfPeople != MIN_PEOPLE) {
             numberOfPeople -= PEOPLE_INCREMENT_VALUE
             numberOfPeopleTextView.text = numberOfPeople.toString()
-            calculateExpense()
         }
     }
 
