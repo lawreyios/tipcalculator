@@ -8,135 +8,28 @@
         android:background="@color/colorWhite"
         tools:context=".MainActivity">
 
-    <TextView
-            android:id="@+id/expensePerPersonTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:paddingTop="30dp"
-            style="@style/h1Bold"
-            android:textColor="@color/colorAccent"
-            android:text="0"/>
+    <!-- TODO #1: Build Expense Section-->
+    <!-- TODO #1a: Add an Expense TextView-->
+    <!-- TODO #1b: Add an Expense Static TextView-->
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:paddingBottom="25dp"
-            style="@style/h2"
-            android:textColor="@color/colorAccent"
-            android:text="@string/perPersonStaticText"/>
+        <!-- TODO #2: Add Inputs Linear Layout-->
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/colorAccent">
+            <!-- TODO #3: Build Bill Section-->
+            <!-- TODO #3a: Add Bill Static TextView-->
+            <!-- TODO #3b: Add Bill EditText-->
 
-        <TextView
-                android:layout_margin="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:textAlignment="center"
-                style="@style/h4"
-                android:text="@string/billStaticText"/>
+            <!-- TODO #4: Build Tip Section-->
+            <!-- TODO #4a: Add Tip Static TextView-->
+            <!-- TODO #4b: Add Tip Linear Layout-->
+                <!-- TODO #4c: Add Tip Plus ImageButton-->
+                <!-- TODO #4d: Add Tip TextView-->
+                <!-- TODO #4d: Add Tip Minus ImageButton-->
 
-        <EditText
-                android:id="@+id/billEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:inputType="numberDecimal"
-                android:maxLines="1"
-                android:textAlignment="center"
-                android:textSize="50sp"
-                style="@style/h4"
-                android:text="0"/>
-
-        <TextView
-                android:layout_margin="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                style="@style/h4"
-                android:text="@string/tipStaticText"/>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <ImageButton
-                    android:id="@+id/subtractTipButton"
-                    style="@style/operationButton"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginStart="20dp"
-                    android:src="@drawable/subtract"/>
-
-            <TextView
-                    android:id="@+id/tipTextView"
-                    android:layout_margin="15dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:textAlignment="center"
-                    android:layout_weight="1"
-                    style="@style/h2Bold"
-                    android:text="20%"/>
-
-            <ImageButton
-                    android:id="@+id/addTipButton"
-                    style="@style/operationButton"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginRight="20dp"
-                    android:src="@drawable/add"/>
-
-        </LinearLayout>
-
-        <TextView
-                android:layout_margin="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:textAlignment="center"
-                style="@style/h4"
-                android:text="@string/numberOfPeopleStaticText"/>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <ImageButton
-                    android:id="@+id/subtractPeopleButton"
-                    style="@style/operationButton"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/subtract"/>
-
-            <TextView
-                    android:id="@+id/numberOfPeopleTextView"
-                    android:layout_margin="15dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:textAlignment="center"
-                    android:layout_weight="1"
-                    style="@style/h2Bold"
-                    android:text="4"/>
-
-            <ImageButton
-                    android:id="@+id/addPeopleButton"
-                    style="@style/operationButton"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/add"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
+            <!-- TODO #5: Build People Section-->
+            <!-- TODO #5a: Add People Static TextView-->
+            <!-- TODO #5b: Add People Linear Layout-->
+                <!-- TODO #5c: Add People Plus ImageButton-->
+                <!-- TODO #5d: Add People TextView-->
+                <!-- TODO #5d: Add People Minus ImageButton-->
 
 </LinearLayout>
