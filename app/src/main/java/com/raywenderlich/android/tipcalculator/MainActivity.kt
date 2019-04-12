@@ -1,4 +1,4 @@
-package com.raywenderlich.tipcalculator
+package com.raywenderlich.android.tipcalculator
 
 import android.content.Context
 import android.os.Bundle
