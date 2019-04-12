@@ -7,9 +7,11 @@ import android.widget.ImageButton
 import android.widget.TextView
 
 const val HUNDRED_PERCENT = 100.00
+const val TIP_INCREMENT_PERCENT = 20
+const val PEOPLE_INCREMENT_VALUE = 1
 
 //TODO #7: Implements Button Listener
-//TODO #14: Implements TextWatcher
+//TODO #15: Implements TextWatcher
 class MainActivity : AppCompatActivity() {
 
     // Top Section
@@ -39,11 +41,11 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         //TODO #6: Connect the Views
         //TODO #8: Bind Buttons to Listener
-        //TODO #15: Bind EditText to TextWatcher
+        //TODO #16: Bind EditText to TextWatcher
     }
 
     private fun calculateExpense() {
-        //TODO #17: Implement and call calculateExpense as required
+        //TODO #14: Implement and call calculateExpense as required
     }
 
     //TODO #9: Override onClick and implement a switch case to handle multiple buttons
@@ -64,5 +66,5 @@ class MainActivity : AppCompatActivity() {
         //TODO #13: Implement People Decrement
     }
 
-    //TODO #16: Implement onTextChanged, beforeTextChanged & afterTextChanged
+    //TODO #17: Implement onTextChanged, beforeTextChanged & afterTextChanged
 }

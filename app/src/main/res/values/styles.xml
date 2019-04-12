@@ -11,19 +11,23 @@
     <style name="h1Bold">
         <item name="android:textSize">50sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="h2">
         <item name="android:textSize">40sp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="h2Bold">
         <item name="android:textSize">40sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="h4">
         <item name="android:textSize">25sp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="operationButton">
