@@ -46,20 +46,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
     private fun initViews() {
         expensePerPersonTextView = findViewById(R.id.expensePerPersonTextView)
         billEditText = findViewById(R.id.billEditText)
-        billEditText.addTextChangedListener(this)
 
         addTipButton = findViewById(R.id.addTipButton)
-        addTipButton.setOnClickListener(this)
         tipTextView = findViewById(R.id.tipTextView)
         subtractTipButton = findViewById(R.id.subtractTipButton)
-        subtractTipButton.setOnClickListener(this)
 
         addPeopleButton = findViewById(R.id.addPeopleButton)
-        addPeopleButton.setOnClickListener(this)
         numberOfPeopleTextView = findViewById(R.id.numberOfPeopleTextView)
         subtractPeopleButton = findViewById(R.id.subtractPeopleButton)
+
+        addTipButton.setOnClickListener(this)
+        subtractTipButton.setOnClickListener(this)
+
+        addPeopleButton.setOnClickListener(this)
         subtractPeopleButton.setOnClickListener(this)
+
+        billEditText.addTextChangedListener(this)
     }
+
 
     private fun calculateExpense() {
 
@@ -86,6 +90,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
             tipPercent += TIP_INCREMENT_PERCENT
             tipTextView.text = String.format("%d%%", tipPercent)
         }
+        calculateExpense()
     }
 
     private fun decrementTip() {
@@ -93,6 +98,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
             tipPercent -= TIP_INCREMENT_PERCENT
             tipTextView.text = String.format("%d%%", tipPercent)
         }
+        calculateExpense()
     }
 
     private fun incrementPeople() {
@@ -100,6 +106,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
             numberOfPeople += PEOPLE_INCREMENT_VALUE
             numberOfPeopleTextView.text = numberOfPeople.toString()
         }
+        calculateExpense()
     }
 
     private fun decrementPeople() {
@@ -107,6 +114,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
             numberOfPeople -= PEOPLE_INCREMENT_VALUE
             numberOfPeopleTextView.text = numberOfPeople.toString()
         }
+        calculateExpense()
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
