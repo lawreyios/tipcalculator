@@ -1,18 +1,7 @@
 <resources>
     <string name="app_name">Tip Calculator</string>
-    <string name="amountTextLabel">Total:</string>
-    <string name="amountTextHint">Enter Amount</string>
-    <string name="tipTextLabel">Tip Amount (%):</string>
-    <string name="tipTextDefaultValue">20</string>
-    <string name="numberOfPeopleTextLabel">Number of People:</string>
-    <string name="numberOfPeopleTextDefaultValue">4</string>
-
-    <string name="amountTextErrorMessage">You did not enter an amount</string>
-    <string name="tipTextErrorMessage">You did not enter tip percentage</string>
-    <string name="peopleTextErrorMessage">You did not enter number of people</string>
-
-    <string name="totalAmountText">Total Bill: $%.2f</string>
-    <string name="totalTipText">Total Tip: $%.2f</string>
-    <string name="billPerPersonText">Bill per person: $%.2f</string>
-    <string name="tipPerPersonText">Tip per person: $%.2f</string>
+    <string name="perPersonStaticText">Per Buddy</string>
+    <string name="billStaticText">Total Damage ($)</string>
+    <string name="tipStaticText">Generous Tip</string>
+    <string name="numberOfPeopleStaticText">Buddies</string>
 </resources>

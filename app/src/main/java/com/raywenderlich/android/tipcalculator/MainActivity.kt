@@ -1,33 +1,34 @@
 package com.raywenderlich.android.tipcalculator
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 
 const val HUNDRED_PERCENT = 100.00
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
 
-    // Calculator
-    private lateinit var amountText: EditText
-    private lateinit var tipText: EditText
-    private lateinit var numberOfPeopleText: EditText
+    // Top Section
+    private lateinit var expensePerPersonTextView: TextView
+    private lateinit var billEditText: EditText
 
-    // Bill Receipt
-    private lateinit var totalBillTextView: TextView
-    private lateinit var totalTipTextView: TextView
-    private lateinit var billPerPersonTextView: TextView
-    private lateinit var tipPerPersonTextView: TextView
+    // Tip Section
+    private lateinit var addTipButton: ImageButton
+    private lateinit var tipTextView: TextView
+    private lateinit var subtractTipButton: ImageButton
 
-    // Button
-    private lateinit var calculateButton: ImageButton
+    // Number of People Section
+    private lateinit var addPeopleButton: ImageButton
+    private lateinit var numberOfPeopleTextView: TextView
+    private lateinit var subtractPeopleButton: ImageButton
+
+    private var numberOfPeople = 4 // set default number of people
+    private var tipPercent = 20 // set default tip percent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,59 +38,77 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        amountText = findViewById(R.id.amountText)
-        tipText = findViewById(R.id.tipText)
-        numberOfPeopleText = findViewById(R.id.numberOfPeopleText)
+        expensePerPersonTextView = findViewById(R.id.expensePerPersonTextView)
+        billEditText = findViewById(R.id.billEditText)
+        billEditText.addTextChangedListener(this)
 
-        totalBillTextView = findViewById(R.id.totalBillTextView)
-        totalTipTextView = findViewById(R.id.totalTipTextView)
-        billPerPersonTextView = findViewById(R.id.billPerPersonTextView)
-        tipPerPersonTextView = findViewById(R.id.tipPerPersonTextView)
+        addTipButton = findViewById(R.id.addTipButton)
+        addTipButton.setOnClickListener(this)
+        tipTextView = findViewById(R.id.tipTextView)
+        subtractTipButton = findViewById(R.id.subtractTipButton)
+        subtractTipButton.setOnClickListener(this)
 
-        calculateButton = findViewById(R.id.calculateButton)
-        calculateButton.setOnClickListener {
-            calculateTip()
+        addPeopleButton = findViewById(R.id.addPeopleButton)
+        addPeopleButton.setOnClickListener(this)
+        numberOfPeopleTextView = findViewById(R.id.numberOfPeopleTextView)
+        subtractPeopleButton = findViewById(R.id.subtractPeopleButton)
+        subtractPeopleButton.setOnClickListener(this)
+    }
+
+    private fun calculateExpense() {
+
+        val totalBill = billEditText.text.toString().toDouble()
+
+        val totalExpense = ((HUNDRED_PERCENT + tipPercent) / HUNDRED_PERCENT) * totalBill
+        val individualExpense = totalExpense / numberOfPeople
+
+        expensePerPersonTextView.text = String.format("$%.2f", individualExpense)
+
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.addTipButton -> incrementTip()
+            R.id.subtractTipButton -> decrementTip()
+            R.id.addPeopleButton -> incrementPeople()
+            R.id.subtractPeopleButton -> decrementPeople()
         }
     }
 
-    private fun calculateTip() {
-
-        if (amountText.text.isEmpty()) {
-            Toast.makeText(this, getString(R.string.amountTextErrorMessage), Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        if (tipText.text.isEmpty()) {
-            Toast.makeText(this, getString(R.string.tipTextErrorMessage), Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        if (numberOfPeopleText.text.isEmpty()) {
-            Toast.makeText(this, getString(R.string.numberOfPeopleTextDefaultValue), Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val amount = amountText.text.toString().toDouble()
-        val tipPercent = tipText.text.toString().toInt()
-        val numberOfPeople = numberOfPeopleText.text.toString().toInt()
-
-        val totalAmount = ((HUNDRED_PERCENT + tipPercent) / HUNDRED_PERCENT) * amount
-        val totalTip = (tipPercent / HUNDRED_PERCENT) * amount
-        val billPerPerson = totalAmount / numberOfPeople
-        val tipPerPerson = totalTip / numberOfPeople
-
-        totalBillTextView.text = String.format(getString(R.string.totalAmountText), totalAmount)
-        totalTipTextView.text = String.format(getString(R.string.totalTipText), totalTip)
-        billPerPersonTextView.text = String.format(getString(R.string.billPerPersonText), billPerPerson)
-        tipPerPersonTextView.text = String.format(getString(R.string.tipPerPersonText), tipPerPerson)
-
-        amountText.hideKeyboard()
-        tipText.hideKeyboard()
-        numberOfPeopleText.hideKeyboard()
+    private fun incrementTip() {
+        tipPercent += 5
+        tipTextView.text = String.format("%d%%", tipPercent)
+        calculateExpense()
     }
 
-    private fun View.hideKeyboard() {
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(windowToken, 0)
+    private fun decrementTip() {
+        if (tipPercent != 0) {
+            tipPercent -= 5
+            tipTextView.text = String.format("%d%%", tipPercent)
+            calculateExpense()
+        }
     }
+
+    private fun incrementPeople() {
+        numberOfPeople += 1
+        numberOfPeopleTextView.text = numberOfPeople.toString()
+        calculateExpense()
+    }
+
+    private fun decrementPeople() {
+        if (numberOfPeople != 0) {
+            numberOfPeople -= 1
+            numberOfPeopleTextView.text = numberOfPeople.toString()
+            calculateExpense()
+        }
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        if (!billEditText.text.isEmpty()) {
+            calculateExpense()
+        }
+    }
+
+    override fun afterTextChanged(s: Editable?) {}
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 }
