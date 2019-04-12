@@ -10,6 +10,8 @@ import android.widget.ImageButton
 import android.widget.TextView
 
 const val HUNDRED_PERCENT = 100.00
+const val TIP_INCREMENT_PERCENT = 20
+const val PEOPLE_INCREMENT_VALUE = 1
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
 
@@ -76,28 +78,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
     }
 
     private fun incrementTip() {
-        tipPercent += 5
+        tipPercent += TIP_INCREMENT_PERCENT
         tipTextView.text = String.format("%d%%", tipPercent)
         calculateExpense()
     }
 
     private fun decrementTip() {
         if (tipPercent != 0) {
-            tipPercent -= 5
+            tipPercent -= TIP_INCREMENT_PERCENT
             tipTextView.text = String.format("%d%%", tipPercent)
             calculateExpense()
         }
     }
 
     private fun incrementPeople() {
-        numberOfPeople += 1
+        numberOfPeople += PEOPLE_INCREMENT_VALUE
         numberOfPeopleTextView.text = numberOfPeople.toString()
         calculateExpense()
     }
 
     private fun decrementPeople() {
-        if (numberOfPeople != 0) {
-            numberOfPeople -= 1
+        if (numberOfPeople != 1) {
+            numberOfPeople -= PEOPLE_INCREMENT_VALUE
             numberOfPeopleTextView.text = numberOfPeople.toString()
             calculateExpense()
         }
