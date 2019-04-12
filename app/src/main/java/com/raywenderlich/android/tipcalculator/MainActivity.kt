@@ -9,6 +9,10 @@ import android.widget.TextView
 const val HUNDRED_PERCENT = 100.00
 const val TIP_INCREMENT_PERCENT = 20
 const val PEOPLE_INCREMENT_VALUE = 1
+const val MIN_TIP = 0
+const val MIN_PEOPLE = 2
+const val MAX_TIP = 95
+const val MAX_PEOPLE = 20
 
 //TODO #7: Implements Button Listener
 //TODO #15: Implements TextWatcher
