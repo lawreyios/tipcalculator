@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         //TODO #6: Connect the Views
-        //TODO #8: Bind Buttons to Listener
+        //TODO #13: Bind Buttons to Listener
         //TODO #16: Bind EditText to TextWatcher
     }
 
@@ -48,22 +48,22 @@ class MainActivity : AppCompatActivity() {
         //TODO #14: Implement and call calculateExpense as required
     }
 
-    //TODO #9: Override onClick and implement a switch case to handle multiple buttons
+    //TODO #8: Override onClick and implement a switch case to handle multiple buttons
 
     private fun incrementTip() {
-        //TODO #10: Implement Tip Increment
+        //TODO #9: Implement Tip Increment
     }
 
     private fun decrementTip() {
-        //TODO #11: Implement Tip Decrement
+        //TODO #10: Implement Tip Decrement
     }
 
     private fun incrementPeople() {
-        //TODO #12: Implement People Increment
+        //TODO #11: Implement People Increment
     }
 
     private fun decrementPeople() {
-        //TODO #13: Implement People Decrement
+        //TODO #12: Implement People Decrement
     }
 
     //TODO #17: Implement onTextChanged, beforeTextChanged & afterTextChanged
